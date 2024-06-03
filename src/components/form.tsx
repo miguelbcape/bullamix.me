@@ -4,12 +4,16 @@ import Link from "next/link";
 //import { useRouter } from "next/navigation";
 import { useRouter } from 'next-nprogress-bar';
 import Input from "@/components/input";
-import { clean, getYouTubeVideoId, isYouTubeURL, searchLink, videoLink } from "@/libs/functions";
+import { getYouTubeVideoId, isYouTubeURL, searchLink, videoLink } from "@/libs/functions";
 
 type Suggestion = [string, number, Array<number>];
 type SuggestionsResponse = [string, Array<Suggestion>];
 
-export default function Form() {
+interface DataMode {
+  mode: string;
+}
+
+export default function Form({mode}: DataMode) {
   const [searchInput, setSearchInput] = useState<string>("");
   const [suggestions, setSuggestions] = useState<Array<string>>([]);
   const suggestionsRef = useRef<HTMLDivElement>(null);
@@ -76,7 +80,7 @@ export default function Form() {
       <section className="flex flex-col justify-center items-center relative py-8">
         <div className="container px-0">
           <h1 className="mx-auto text-2xl font-extrabold leading-snug text-center text-indigo-900 sm:max-w-lg sm:text-4xl sm:leading-snug md:max-w-2xl md:text-5xl md:leading-tight">
-            Descargar Música Gratis
+            {mode}
           </h1>
           <form
             className="relative gap-2 p-1 mt-4 rounded bg-gradient-to-r from-rose-600 to-orange-500 sm:flex sm:p-2 lg:mt-8"

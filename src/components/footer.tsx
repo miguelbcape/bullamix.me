@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -6,19 +6,19 @@ export default function Footer() {
       <nav className="mt-2">
         <ul className="flex flex-wrap items-center justify-center font-bold">
           <li>
-            <a className="block p-2 text-indigo-900 hover:underline" href="#">
+            <Link className="block p-2 text-indigo-900 hover:underline" href="/terminos-de-uso" title="términos de uso">
               Términos de uso
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="block p-2 text-indigo-900 hover:underline" href="#">
+            <Link className="block p-2 text-indigo-900 hover:underline" href="/politica-de-privacidad" title="política de privacidad">
               Política de privacidad
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="block p-2 text-indigo-900 hover:underline" href="#">
+            <Link className="block p-2 text-indigo-900 hover:underline" href="/contacto" title="contacto">
               Contacto
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

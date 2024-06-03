@@ -1,10 +1,11 @@
 import HomeContent from "@/components/HomeContent";
-import HomeTip from "@/components/HomeTip";
+import HomeTip from "@/components/FaqHome";
 import Features from "@/components/features";
 import Form from "@/components/form";
 import Instructions from "@/components/instructions";
 import List from "@/components/list";
 import SearchQuery from "@/components/search";
+import { SITE } from "@/libs/config";
 
 interface Params {
   params: {
@@ -12,10 +13,32 @@ interface Params {
   };
 }
 
+export async function generateMetadata() {
+  const ti = `${SITE} ~ Buscador de canciones`;
+  const de = `En ${SITE} puedes buscar cualquier video o canción de YouTube Gratis.`;
+  return {
+    title: ti,
+    description: de,
+    robots: {
+      index: false,
+      follow: false,
+      nocache: false,
+      googleBot: {
+        index: false,
+        follow: false,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  }
+}
+
 export default function SearchPage({ params: { query } }: Params) {
   return (
     <>
-      <Form />
+      <Form mode="Buscador de canciones"/>
 
       <section className="py-4">
         <SearchQuery value={query} />

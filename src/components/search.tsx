@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import LoadingResult from "@/components/loading";
+import LoadingResult from "@/components/loadingSearch";
 import { videoLink } from "@/libs/functions";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -15,6 +15,7 @@ export default function SearchQuery({ value }: Data) {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<boolean>(false);
+  const resultsRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +27,18 @@ export default function SearchQuery({ value }: Data) {
         const { results } = await response.json();
         setData(results);
         setLoading(false);
+
+        // Realizar el scroll hacia los resultados después de que se carguen
+        if (resultsRef.current) {
+          const elementTop = resultsRef.current.getBoundingClientRect().top;
+          const offset = window.pageYOffset || document.documentElement.scrollTop;
+          const newPosition = elementTop + offset - 15; // Disminuir 15px de la posición
+        
+          window.scrollTo({
+            top: newPosition,
+            behavior: "smooth",
+          });
+        }
       } catch (error) {
         setError(true);
         setLoading(false);
@@ -48,10 +61,10 @@ export default function SearchQuery({ value }: Data) {
           resultados. Por favor, inténtelo de nuevo más tarde.
         </div>
       ) : (
-        <ul className="grid grid-cols-1 grid-rows-auto gap-5 sm:grid-cols-2 md:grid-cols-3">
+        <ul className="grid grid-cols-1 grid-rows-auto gap-5 sm:grid-cols-2 md:grid-cols-3" ref={resultsRef}>
           {data.map((d) => (
             <li key={d.id} className="relative">
-              <div className="searchBtn mx-auto aspect-[16/9] max-h-[220px]">
+              <div className="searchBtn w-full mx-auto aspect-[16/9]">
                 <div className="relative">
                   <LazyLoadImage
                     className="mx-auto aspect-[16/9] max-h-[220px] object-cover rounded-lg"
@@ -64,7 +77,7 @@ export default function SearchQuery({ value }: Data) {
                     {d.duration}
                   </span>
                 </div>
-                <div className="mt-3 mb-1 text-sm font-semibold text-indigo-900 hover:text-rose-600">
+                <div className="mb-1 text-sm font-semibold text-indigo-900 hover:text-rose-600">
                   <Link
                     href={videoLink(d.id)}
                     className="ytd-rich after:absolute after:inset-0"
