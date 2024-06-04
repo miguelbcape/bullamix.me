@@ -5,15 +5,15 @@ import { useState } from "react";
 
 export default function Header() {
   const [ismenu, setMenu] = useState<boolean>(false);
-  const [islang, setLang] = useState<boolean>(false);
+  //const [islang, setLang] = useState<boolean>(false);
 
   const toggleMenu = () => {
     setMenu(!ismenu);
   };
 
-  const toggleLang = () => {
-    setLang(!islang);
-  };
+  // const toggleLang = () => {
+  //   setLang(!islang);
+  // };
 
   return (
     <header className="w-full bg-indigo-900 text-slate-50 sm:bg-white sm:text-indigo-900 z-10">
@@ -89,7 +89,7 @@ export default function Header() {
             type="button"
             className="btn h-10 text-current sm:text-slate-500 text-[15px]"
             aria-label="Idioma"
-            onClick={toggleLang}
+            //onClick={toggleLang}
           >
             <svg className="ic">
               <use href="/assets/ic.svg#ic-lang"></use>
@@ -99,41 +99,16 @@ export default function Header() {
               <use href="/assets/ic.svg#ic-down"></use>
             </svg>
           </button>
-          {islang ? (
+          {/* {islang ? (
             <div>
-              {/* <ul className="absolute right-0 top-full z-20 mt-2 grid w-64 grid-cols-2 rounded border border-slate-200 bg-white p-4 text-sm shadow-md sm:w-96 sm:grid-cols-3"> */}
               <ul className="absolute right-0 top-full z-20 mt-2 w-40 rounded border border-slate-200 bg-white px-2 py-4 text-sm shadow-md">
                 <li>
-                  <a
-                    href="/es"
+                  <Link
+                    href="/"
                     className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
                   >
                     Español
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/es"
-                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
-                  >
-                    Ingles
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/es"
-                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
-                  >
-                    Frances
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/es"
-                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
-                  >
-                    Portugues
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <div
@@ -143,7 +118,7 @@ export default function Header() {
             </div>
           ) : (
             ""
-          )}
+          )} */}
         </div>
       </div>
     </header>
