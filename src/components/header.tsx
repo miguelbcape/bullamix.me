@@ -4,10 +4,15 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
-  const [hidden, setHidden] = useState<boolean>(false);
+  const [ismenu, setMenu] = useState<boolean>(false);
+  const [islang, setLang] = useState<boolean>(false);
 
-  const toggleHidden = () => {
-    setHidden(!hidden);
+  const toggleMenu = () => {
+    setMenu(!ismenu);
+  };
+
+  const toggleLang = () => {
+    setLang(!islang);
   };
 
   return (
@@ -18,12 +23,12 @@ export default function Header() {
           data-name="mobile-btn"
           type="button"
           aria-expanded="false"
-          onClick={toggleHidden}
+          onClick={toggleMenu}
         >
           <span>
             <svg data-name="closed" className="ic text-l">
               <use
-                href={`/assets/ic.svg#${hidden ? "ic-close" : "ic-menu"}`}
+                href={`/assets/ic.svg#${ismenu ? "ic-close" : "ic-menu"}`}
               ></use>
             </svg>
           </span>
@@ -43,7 +48,7 @@ export default function Header() {
         </Link>
         <nav
           className={`order-last w-full ${
-            hidden ? "" : "hidden"
+            ismenu ? "" : "hidden"
           } lg:order-none lg:block lg:w-auto lg:items-center`}
         >
           <ul className="flex flex-col gap-x-2 font-bold text-white sm:text-indigo-900 lg:flex-row lg:items-center">
@@ -52,7 +57,7 @@ export default function Header() {
                 title="Descargar Musica"
                 className="flex h-10 items-center rounded px-4 hover:bg-indigo-900 hover:bg-opacity-10"
                 href="/"
-                onClick={toggleHidden}
+                onClick={toggleMenu}
               >
                 Inicio
               </Link>
@@ -62,7 +67,7 @@ export default function Header() {
                 title="YouTube a MP3"
                 className="flex h-10 items-center rounded px-4 hover:bg-indigo-900 hover:bg-opacity-10"
                 href="/youtube-a-mp3"
-                onClick={toggleHidden}
+                onClick={toggleMenu}
               >
                 YouTube a MP3
               </Link>
@@ -72,7 +77,7 @@ export default function Header() {
                 title="YouTube a MP4"
                 className="flex h-10 items-center rounded px-4 hover:bg-indigo-900 hover:bg-opacity-10"
                 href="/descargar-videos-de-youtube"
-                onClick={toggleHidden}
+                onClick={toggleMenu}
               >
                 Descargar Videos de YouTube
               </Link>
@@ -84,7 +89,7 @@ export default function Header() {
             type="button"
             className="btn h-10 text-current sm:text-slate-500 text-[15px]"
             aria-label="Idioma"
-            //onClick={toggleHidden}
+            onClick={toggleLang}
           >
             <svg className="ic">
               <use href="/assets/ic.svg#ic-lang"></use>
@@ -94,34 +99,51 @@ export default function Header() {
               <use href="/assets/ic.svg#ic-down"></use>
             </svg>
           </button>
-          {/* {hidden ? (
+          {islang ? (
             <div>
-              <ul className="absolute right-0 top-full z-20 mt-2 grid w-64 grid-cols-2 rounded border border-slate-200 bg-white p-4 text-sm shadow-md sm:w-96 sm:grid-cols-3">
+              {/* <ul className="absolute right-0 top-full z-20 mt-2 grid w-64 grid-cols-2 rounded border border-slate-200 bg-white p-4 text-sm shadow-md sm:w-96 sm:grid-cols-3"> */}
+              <ul className="absolute right-0 top-full z-20 mt-2 w-40 rounded border border-slate-200 bg-white px-2 py-4 text-sm shadow-md">
                 <li>
                   <a
                     href="/es"
-                    className="block w-fit rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 hover:font-bold"
+                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
                   >
                     Español
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/en1"
-                    className="block w-fit rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 hover:font-bold"
+                    href="/es"
+                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
                   >
-                    English
+                    Ingles
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/es"
+                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
+                  >
+                    Frances
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/es"
+                    className="block rounded px-4 py-2 text-indigo-900 hover:bg-indigo-900 hover:bg-opacity-10 font-medium"
+                  >
+                    Portugues
                   </a>
                 </li>
               </ul>
               <div
                 className="fixed inset-0 bg-transparent"
-                onClick={toggleHidden}
+                onClick={toggleLang}
               ></div>
             </div>
           ) : (
             ""
-          )} */}
+          )}
         </div>
       </div>
     </header>
