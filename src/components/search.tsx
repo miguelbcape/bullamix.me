@@ -31,8 +31,7 @@ export default function SearchQuery({ value }: Data) {
         // Realizar el scroll hacia los resultados después de que se carguen
         if (resultsRef.current) {
           const elementTop = resultsRef.current.getBoundingClientRect().top;
-          const offset = window.pageYOffset || document.documentElement.scrollTop;
-          const newPosition = elementTop + offset - 15; // Disminuir 15px de la posición
+          const newPosition = elementTop - 15; // Disminuir 15px de la posición
         
           window.scrollTo({
             top: newPosition,

@@ -55,7 +55,7 @@ export default function Input({ value, onChange }: InputProps) {
       />
       {!isButtonVisible ? (
         <button
-          className="absolute h-12 px-4 rounded btn right-2 top-2 bg-slate-100 hover:bg-slate-200"
+          className="absolute h-12 px-4 rounded btn right-2 top-2 text-[#525252] bg-slate-100 hover:bg-slate-200"
           type="button"
           onClick={handlePasteClick}
           aria-label="Pegar"
