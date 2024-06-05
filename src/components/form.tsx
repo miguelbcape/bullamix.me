@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from 'next-nprogress-bar';
 import Input from "@/components/input";
 import { getYouTubeVideoId, isYouTubeURL, searchLink, videoLink } from "@/libs/functions";
+import Image from "next/image";
 
 type Suggestion = [string, number, Array<number>];
 type SuggestionsResponse = [string, Array<Suggestion>];
@@ -114,7 +115,7 @@ export default function Form({mode}: DataMode) {
               </div>
             )}
           </form>
-          <img
+          <Image
             className="absolute -left-24 bottom-12 -z-10 opacity-20 hidden lg:block"
             src="/assets/points.png"
             width={131}
@@ -122,7 +123,7 @@ export default function Form({mode}: DataMode) {
             alt="points"
             title="points"
           />
-          <img
+          <Image
             className="absolute -right-[4rem] bottom-24 -z-10 hidden lg:block"
             src="/assets/arrow.png"
             width={142}

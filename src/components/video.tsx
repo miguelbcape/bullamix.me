@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import LoadingVideo from "@/components/loadingVideo";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 interface Data {
   value: string;
@@ -67,21 +69,23 @@ export default function VideoId({ value }: Data) {
               <aside>
                 <div className="relative grid gap-2">
                   <figure className="relative">
-                    <img
+                    <LazyLoadImage
                       alt={data.title}
                       width="480"
                       height="360"
                       decoding="async"
                       className="w-full rounded-lg aspect-thumb"
+                      effect="blur"
                       src={data.thumbnail}
                     />
                     <button
                       className="absolute flex items-center justify-center inset-0 w-full h-full rounded-lg bg-[rgba(0,0,0,.6)] transition-opacity duration-100 ease-out opacity-0 hover:opacity-100"
                       onClick={toggleHidden}
                     >
-                      <img
+                      <LazyLoadImage
                         src="/assets/play.svg"
-                        alt=""
+                        alt="Reproducir"
+                        effect="blur"
                         className="w-[40px] opacity-80"
                       />
                     </button>

@@ -1,5 +1,6 @@
 "use client";
 import { SITE } from "@/libs/config";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -39,10 +40,13 @@ export default function Header() {
           href="/"
           title={SITE}
         >
-          <img
+          <Image
             className="w-[28px] lg:w-[35px]"
+            width={30}
+            height={30}
             src="/assets/logo.svg"
-            title="Descargar Musica"
+            alt="Descargar Musica"
+            title="Descargar Musica Gratis"
           />
           <span className="font-semibold text-xl lg:text-2xl lg:font-extrabold">{SITE}</span>
         </Link>
